@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christy Samuel Moses Dsouza - Portfolio</title>
+  <style>
+    /* ================== GENERAL STYLES ================== */
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafc;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0073e6, #00b4d8);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: bold;
+      animation: typing 3s steps(30, end), blink 0.8s infinite;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid white;
+      display: inline-block;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.1rem;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffdd57;
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 1.6rem;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        margin-top: 1rem;
+      }
+      nav.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    /* ================== SIDEBAR ================== */
+    aside {
+      flex: 1;
+      max-width: 280px;
+      margin-right: 2rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    aside:hover {
+      transform: scale(1.05);
+    }
+
+    aside img {
+      border-radius: 50%;
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid #0073e6;
+      transition: transform 0.3s;
+    }
+
+    aside img:hover {
+      transform: rotate(5deg) scale(1.1);
+    }
+
+    aside h2 {
+      margin: 0.5rem 0;
+      font-size: 1.6rem;
+      color: #0073e6;
+    }
+
+    aside p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* ================== MAIN CONTENT ================== */
+    main {
+      flex: 3;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+      cursor: pointer;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      color: #0073e6;
+      border-bottom: 3px solid #00b4d8;
+      display: inline-block;
+      padding-bottom: 0.3rem;
+    }
+
+    section.active {
+      animation: bounce 0.6s;
+    }
+
+    @keyframes bounce {
+      0%   { transform: scale(1); }
+      25%  { transform: scale(1.05); }
+      50%  { transform: scale(0.97); }
+      75%  { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 1.5rem;
+    }
+
+    ul li {
+      margin: 0.5rem 0;
+    }
+
+    /* ================== IFRAME VIDEO ================== */
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* ================== CONTACT FORM ================== */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    form input, form textarea {
+      padding: 0.8rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    form input:focus, form textarea:focus {
+      border-color: #0073e6;
+      box-shadow: 0 0 8px rgba(0,115,230,0.3);
+    }
+
+    form button {
+      padding: 0.9rem;
+      background: #0073e6;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    form button:hover {
+      background: #005bb5;
+      transform: translateY(-2px);
+    }
+
+    /* ================== FOOTER ================== */
+    footer {
+      background: #0073e6;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      margin-top: 2rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 0.7rem;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #ffdd57;
+    }
+
+    /* ================== MOBILE ================== */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      aside {
+        margin: 0 auto 2rem;
+      }
+      iframe {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Christy Samuel Moses Dsouza</h1>
+    <p>BTech CSE (AIML) | Cybersecurity Enthusiast | Campus CEO @ Under 25</p>
+    <div class="menu-toggle">☰ Menu</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#video">Company Video</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <aside>
+      <img src="https://media.licdn.com/dms/image/v2/D5603AQHMYD88wE_3Xw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1718288997040?e=2147483647&v=beta&t=0dwbQQFiAjeDgI3me0aFxkJ-BjL1R0lk0vGnYLTgU7A" alt="Christy Dsouza Photo">
+      <h2>Christy Dsouza</h2>
+      <p>Aspiring AI/ML Engineer & Cybersecurity Specialist. Passionate about technology, leadership, and music.</p>
+    </aside>
+
+    <!-- Main -->
+    <main>
+      <section id="about">
+        <h2>About Me</h2>
+        <p>
+          Hello! I’m Christy Samuel Moses Dsouza, a BTech student at Christ University specializing in Artificial Intelligence and Machine Learning with a focus on Cybersecurity.  
+          I serve as the Campus CEO for the Under 25 Fellowship at Christ University Kengeri and as Program Lead at the Millennial Board of Advisory.  
+          I’ve also worked in diverse roles from Sales Representative at Samsung India to Social Media Manager at LYF Wellness.  
+          I’m fluent in English, Hindi, Kannada, Konkani, and Malayalam.  
+          My vision is to merge technical expertise with entrepreneurial and community-driven initiatives to create real-world impact.
+        </p>
+      </section>
+
+      <section id="education">
+        <h2>Education & Certifications</h2>
+        <ul>
+          <li>BTech in CSE (AIML), Christ University (2023–2027)</li>
+          <li>Cybersecurity Honors (Ongoing)</li>
+          <li>Workshops: LinkedIn Branding, AI Tools, Ethical Hacking</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+        <ul>
+          <li>Campus CEO – Under 25 Fellowship, Christ University Kengeri</li>
+          <li>Program Lead – Millennial Board of Advisory (MBOA)</li>
+          <li>Social Media Manager – LYF Wellness</li>
+          <li>Sales Representative – Samsung India</li>
+          <li>Website Developer & Manager – Perpetual IoT Solutions</li>
+        </ul>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>Programming: Java, C++, HTML</li>
+          <li>Tools: PowerDirector, AI Content Tools</li>
+          <li>Event Hosting & Public Speaking</li>
+          <li>Leadership & Community Building</li>
+        </ul>
+      </section>
+
+      <section id="video">
+        <h2>Company Video</h2>
+        <p>Here’s a quick look at my company’s work:</p>
+        <iframe src="https://www.youtube.com/embed/k_F3UOZ08hk?start=41" allowfullscreen></iframe>
+      </section>
+
+      <section id="contact">
+        <h2>Contact Me</h2>
+        <form>
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>© 2025 Christy Samuel Moses Dsouza | 
+      <a href="mailto:christysmdsouza@gmail.com">Email</a> | 
+      <a href="https://www.linkedin.com/in/christy-samuel-moses-dsouza-6048a3221/" target="_blank">LinkedIn</a> | 
+      <a href="https://www.instagram.com/dsouzkie/?hl=en" target="_blank">Instagram</a>
+    </p>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    document.querySelector(".menu-toggle").addEventListener("click", () => {
+      document.querySelector("nav").classList.toggle("active");
+    });
+
+    // Scroll animation
+    const sections = document.querySelectorAll("section");
+    const revealOnScroll = () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < trigger) {
+          sec.classList.add("show");
+        }
+      });
+    };
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+
+    // On-click bounce animation
+    sections.forEach(sec => {
+      sec.addEventListener("click", () => {
+        sec.classList.add("active");
+        setTimeout(() => sec.classList.remove("active"), 600);
+      });
+    });
+
+    // Contact form (simple alert)
+    const form = document.querySelector("form");
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      alert("Thank you for reaching out! I’ll get back to you soon.");
+      form.reset();
+    });
+  </script>
+</body>
+</html>
